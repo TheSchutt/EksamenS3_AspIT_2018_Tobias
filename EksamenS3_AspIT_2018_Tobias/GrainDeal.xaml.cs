@@ -12,25 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using ClassBIZ;
 
 namespace EksamenS3_AspIT_2018_Tobias
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for GrainDeal.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class GrainDeal : UserControl
     {
-        ClassBiz CB = new ClassBiz();
-        ClassLogin CL = new ClassLogin();
-        public MainWindow()
+        public GrainDeal()
         {
             InitializeComponent();
-            CB.MakeDataBase();
-            LogIn logIn = new LogIn(CL,CB,this.MainGrid);
-            this.MainGrid.Children.Clear();
-            this.MainGrid.Children.Add(logIn);
-        
         }
     }
 }

@@ -17,20 +17,26 @@ using ClassBIZ;
 namespace EksamenS3_AspIT_2018_Tobias
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for GrainSupplierAdm.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class GrainSupplierAdm : UserControl
     {
-        ClassBiz CB = new ClassBiz();
-        ClassLogin CL = new ClassLogin();
-        public MainWindow()
+        ClassBiz CB;
+        public GrainSupplierAdm(Grid inGrid, ClassBiz inCB)
         {
             InitializeComponent();
-            CB.MakeDataBase();
-            LogIn logIn = new LogIn(CL,CB,this.MainGrid);
-            this.MainGrid.Children.Clear();
-            this.MainGrid.Children.Add(logIn);
-        
+            GridSupplierAdm = inGrid;
+            CB = inCB;
+        }
+
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            CB.CreateSupplier();
+        }
+
+        private void RegretButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
