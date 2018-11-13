@@ -51,6 +51,7 @@
     <Compile Include="ClassNotify.cs" />
     <Compile Include="ClassOrder.cs" />
     <Compile Include="ClassPhone.cs" />
+    <Compile Include="ClassRegEx.cs" />
     <Compile Include="ClassSaleAssistant.cs" />
     <Compile Include="ClassSupllier.cs" />
     <Compile Include="ClassUser.cs" />

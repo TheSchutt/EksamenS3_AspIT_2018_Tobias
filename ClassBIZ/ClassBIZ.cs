@@ -10,6 +10,7 @@ using System.Data.Entity.Validation;
 using System.Collections.ObjectModel;
 using Repository;
 using System.Data;
+using System.Windows.Controls;
 
 namespace ClassBIZ
 {
@@ -17,6 +18,8 @@ namespace ClassBIZ
     {
         private GrainContext getData = new GrainContext();
         AsynchronousClient AC = new AsynchronousClient();
+        public ClassSupllier classSupllierEdit = new ClassSupllier();
+        public ClassSaleAssistant classSaleAssistantEdit = new ClassSaleAssistant();
         public ClassBiz()
         {
             CollectionAccess = new ObservableCollection<ClassAccess>(getData.Access.ToList() as List<ClassAccess>);
@@ -40,7 +43,17 @@ namespace ClassBIZ
         public ClassSaleAssistant ClassSaleAssistant
         {
             get { return _classSaleAssistant; }
-            set { _classSaleAssistant = value; }
+            set
+            {
+                if (value != _classSaleAssistant)
+                {
+                    _classSaleAssistant = value;
+                    Notify("ClassSaleAssistant");
+
+
+                }
+                
+            }
         }
 
         private ObservableCollection<ClassSupllier> _suplliers;
@@ -59,7 +72,15 @@ namespace ClassBIZ
         public ClassSupllier ClassSupllier
         {
             get { return _classSupllier; }
-            set { _classSupllier = value; }
+            set
+            {
+                if (value != _classSupllier)
+                {
+                    _classSupllier = value;
+                    Notify("ClassSupllier");
+                }
+                
+            }
         }
 
 
@@ -149,7 +170,7 @@ namespace ClassBIZ
         {
             using(var ctx = new GrainContext())
             {
-                ctx.Supplier.Add(ClassSupllier);
+                ctx.Supplier.Add(classSupllierEdit);
                 ctx.SaveChanges();
                 suppliers.Clear();
                 List<ClassSupllier> classSuplliers = ctx.Supplier.ToList() as List<ClassSupllier>;
@@ -202,6 +223,15 @@ namespace ClassBIZ
             }
 
 
+        }
+        public void SetSupplierData(object inObj)
+        {
+            ListView LV = (ListView)inObj;
+            if (LV.SelectedItem != null)
+            {
+                ClassSupllier = (ClassSupllier)LV.SelectedItem;
+
+            }
         }
 
     }

@@ -27,8 +27,10 @@ namespace EksamenS3_AspIT_2018_Tobias
         {
             InitializeComponent();
             CB = inCB;
+            GrainSupplierGroupBox.DataContext = CB.ClassSupllier;
+            SaleAssistantGroupBox.DataContext = CB.ClassSaleAssistant;
             MainGrid = inGrid;
-            MainGrid.DataContext = CB;
+            
         }
 
         private void CreateSupplierButton_Click(object sender, RoutedEventArgs e)
@@ -36,6 +38,11 @@ namespace EksamenS3_AspIT_2018_Tobias
             GrainSupplierAdm UCGSA = new GrainSupplierAdm(MainGrid, CB);
             MainGrid.Children.Clear();
             MainGrid.Children.Add(UCGSA);
+        }
+
+        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            CB.SetSupplierData(sender);
         }
     }
 }

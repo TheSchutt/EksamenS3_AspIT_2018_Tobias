@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ClassBIZ;
+using Repository;
 
 namespace EksamenS3_AspIT_2018_Tobias
 {
@@ -25,13 +26,21 @@ namespace EksamenS3_AspIT_2018_Tobias
         public GrainSupplierAdm(Grid inGrid, ClassBiz inCB)
         {
             InitializeComponent();
-            GridSupplierAdm = inGrid;
             CB = inCB;
+            GrainSupplierAdmGroupBox.DataContext = CB.classSupllierEdit;
+            SaleAssistantAdmGroupBox.DataContext = CB.classSaleAssistantEdit;
+            GridSupplierAdm = inGrid;
+            
+            
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
+                        
             CB.CreateSupplier();
+            GrainSupplier UCGS = new GrainSupplier(GridSupplierAdm, CB);
+            GridSupplierAdm.Children.Clear();
+            GridSupplierAdm.Children.Add(UCGS);
         }
 
         private void RegretButton_Click(object sender, RoutedEventArgs e)

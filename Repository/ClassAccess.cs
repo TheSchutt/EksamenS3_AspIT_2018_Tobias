@@ -31,7 +31,7 @@ namespace Repository
                 if (value != _cprNr)
                 {
                     _cprNr = value;                    
-                    Notify("cprNr");
+                    
                 }
             }
         }
@@ -44,7 +44,7 @@ namespace Repository
                 if (value != _passWord)
                 {
                     _passWord = value;
-                    Notify("passWord");
+                    
                 }
             }
         }
